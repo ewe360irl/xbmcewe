@@ -23,7 +23,6 @@ using System.Net.Sockets;
 
 namespace XBMC
 {
-
     public enum IconType
     {
         ICON_NONE = 0x00,
@@ -69,7 +68,6 @@ namespace XBMC
 
     public class EventClient
     {
-
         /************************************************************************/
         /* Written by Peter Tribe aka EqUiNox (TeamBlackbolt)                   */
         /* Based upon XBMC's xbmcclient.cpp class                               */
@@ -162,7 +160,6 @@ namespace XBMC
 
         private byte[] Header(PacketType PacketType, int NumberOfPackets, int CurrentPacket, int PayloadSize)
         {
-
             byte[] header = new byte[HEADER_SIZE];
 
             header[0] = (byte)'X';
@@ -210,7 +207,6 @@ namespace XBMC
         {
             try
             {
-
                 bool successful = true;
                 int packetCount = (Payload.Length / MAX_PAYLOAD_SIZE) + 1;
                 int bytesToSend = 0;
@@ -219,7 +215,6 @@ namespace XBMC
 
                 for (int Package = 1; Package <= packetCount; Package++)
                 {
-
                     if (bytesLeft > MAX_PAYLOAD_SIZE)
                     {
                         bytesToSend = MAX_PAYLOAD_SIZE;
@@ -254,7 +249,6 @@ namespace XBMC
             }
             catch
             {
-
                 return false;
 
             }
@@ -272,7 +266,6 @@ namespace XBMC
         /************************************************************************/
         public bool SendHelo(string DevName, IconType IconType, string IconFile)
         {
-
             byte[] icon = new byte[0];
             if (IconType != IconType.ICON_NONE)
                 icon = File.ReadAllBytes(IconFile);
@@ -314,7 +307,6 @@ namespace XBMC
         /************************************************************************/
         public bool SendNotification(string Caption, string Message, IconType IconType, string IconFile)
         {
-
             byte[] icon = new byte[0];
             if (IconType != IconType.ICON_NONE)
                 icon = File.ReadAllBytes(IconFile);
@@ -374,7 +366,6 @@ namespace XBMC
         /************************************************************************/
         private bool SendButton(string Button, ushort ButtonCode, string DeviceMap, ButtonFlagsType Flags, short Amount)
         {
-
             if (Button.Length != 0)
             {
                 if ((Flags & ButtonFlagsType.BTN_USE_NAME) == 0)
@@ -480,7 +471,6 @@ namespace XBMC
         /************************************************************************/
         public bool SendMouse(ushort X, ushort Y, MouseFlagsType Flags)
         {
-
             byte[] payload = new byte[9];
 
             int offset = 0;
@@ -509,7 +499,6 @@ namespace XBMC
         /************************************************************************/
         public bool SendLog(LogTypeEnum LogLevel, string Message)
         {
-
             byte[] payload = new byte[Message.Length + 2];
 
             int offset = 0;
@@ -531,7 +520,6 @@ namespace XBMC
         /************************************************************************/
         public bool SendAction(ActionType Action, string Message)
         {
-
             byte[] payload = new byte[Message.Length + 2];
 
             int offset = 0;
