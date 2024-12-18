@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -175,6 +175,5 @@ namespace Platinum.Managed.MediaServerTest
 
             return -1;
         }
-
     }
 }
