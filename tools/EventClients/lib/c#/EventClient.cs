@@ -203,7 +203,6 @@ namespace XBMC
             header[21] = (byte)(uniqueToken & 0x000000ff);
 
             return header;
-
         }
 
         private bool Send(PacketType PacketType, byte[] Payload)
@@ -246,19 +245,15 @@ namespace XBMC
                     }
 
                     bytesSent += bytesToSend;
-
                 }
 
                 return successful;
-
             }
             catch
             {
 
                 return false;
-
             }
-
         }
 
         /************************************************************************/
@@ -296,7 +291,6 @@ namespace XBMC
             Array.Copy(icon, 0, payload, DevName.Length + 12, icon.Length);
 
             return Send(PacketType.PT_HELO, payload);
-
         }
 
         public bool SendHelo(string DevName)
@@ -339,7 +333,6 @@ namespace XBMC
             Array.Copy(icon, 0, payload, Caption.Length + Message.Length + 7, icon.Length);
 
             return Send(PacketType.PT_NOTIFICATION, payload);
-
         }
 
         public bool SendNotification(string Caption, string Message)
@@ -415,7 +408,6 @@ namespace XBMC
             payload[offset++] = (byte)'\0';
 
             return Send(PacketType.PT_BUTTON, payload);
-
         }
 
         public bool SendButton(string Button, string DeviceMap, ButtonFlagsType Flags, short Amount)
@@ -494,7 +486,6 @@ namespace XBMC
             payload[offset++] = (byte)(Y & 0x00ff);
 
             return Send(PacketType.PT_MOUSE, payload);
-
         }
 
         public bool SendMouse(ushort X, ushort Y)
@@ -521,7 +512,6 @@ namespace XBMC
             payload[offset++] = (byte)'\0';
 
             return Send(PacketType.PT_LOG, payload);
-
         }
 
         /************************************************************************/
@@ -543,13 +533,11 @@ namespace XBMC
             payload[offset++] = (byte)'\0';
 
             return Send(PacketType.PT_ACTION, payload);
-
         }
 
         public bool SendAction(string Message)
         {
             return SendAction(ActionType.ACTION_EXECBUILTIN, Message);
         }
-
     }
 }
